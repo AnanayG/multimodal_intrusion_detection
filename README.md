@@ -12,3 +12,11 @@ You may add additional folders as necessary.
 Team:
 1. Christopher Yang
 2. Ananay Garg
+
+# Project Files:
+
+* [Website Link](https://ananayg.github.io/multimodal_intrusion_detection/)
+* [Proposal](proposal)
+* [Midterm Checkpoint Presentation Slides](http://)
+* [Final Presentation Slides](http://)
+* [Final Report](report)
