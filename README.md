@@ -1,5 +1,5 @@
 # ecem202a_project
-This is repository template for UCLA ECEM202A / CSM213A projects.
+Ultra low power person detection with multimodal wakeup hierarchy using TinyML
 
 Use the folders as follows:
 
