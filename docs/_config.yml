@@ -9,7 +9,8 @@ title: Low-Power ML-based Multimodal Intrusion Detection
 logo: /media/camera.jpg
 description: Project for UCLA ECEM202A/CSM213A (Fall 2023)
 
-remote_theme: yaoyao-liu/minimal-light
+theme: jekyll-theme-minimal
+# remote_theme: yaoyao-liu/minimal-light
 auto_dark_mode: true
 
 
