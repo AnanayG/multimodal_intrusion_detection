@@ -1,8 +1,12 @@
-theme: jekyll-theme-modernist
+# Use this project as a remote theme for GitHub Pages
+# See the guide here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
+remote_theme: yaoyao-liu/minimal-light
 show_downloads: true
+auto_dark_mode: true
 
 # google_analytics:[Your Google Analytics tracking ID]
 
 # Name of website
-title: myProjectTitle
-description: Project for UCLA ECEM202A/CSM213A (Fall 2021)
+title: Low-Power ML-based Multimodal Intrusion Detection
+logo: /media/camera.jpg
+description: Project for UCLA ECEM202A/CSM213A (Fall 2023)

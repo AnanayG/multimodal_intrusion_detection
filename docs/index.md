@@ -1,12 +1,11 @@
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+Ultra low power person detection with multimodal wakeup hierarchy using TinyML
 
 # Team
 
-* Name of team member \#1 
-* Name of team member \#2 (delete this if necessary)
-* Name of team member \#3 (delete this if necessary)
+* Christopher Yang
+* Ananay Garg
 
 # Required Submissions
 
