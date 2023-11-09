@@ -16,7 +16,7 @@ You may add additional folders as necessary.
 ## Project Files:
 
 * [Website Link](https://ananayg.github.io/multimodal_intrusion_detection/)
-* [Proposal](proposal)
+* [Proposal](https://ananayg.github.io/multimodal_intrusion_detection/proposal)
 * [Midterm Checkpoint Presentation Slides](http://)
 * [Final Presentation Slides](http://)
-* [Final Report](report)
+* [Final Report](https://ananayg.github.io/multimodal_intrusion_detection/report)
