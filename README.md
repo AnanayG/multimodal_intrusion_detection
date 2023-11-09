@@ -8,3 +8,7 @@ Use the folders as follows:
 * data/ for data data used in your project
 
 You may add additional folders as necessary.
+
+Team:
+1. Christopher Yang
+2. Ananay Garg
