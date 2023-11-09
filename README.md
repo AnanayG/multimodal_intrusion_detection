@@ -1,4 +1,4 @@
-# ecem202a_project
+# Ultra low power person detection with multimodal wakeup hierarchy using TinyML
 Ultra low power person detection with multimodal wakeup hierarchy using TinyML
 
 Use the folders as follows:
