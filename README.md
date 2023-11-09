@@ -9,11 +9,11 @@ Use the folders as follows:
 
 You may add additional folders as necessary.
 
-Team:
+## Team
 1. Christopher Yang
 2. Ananay Garg
 
-# Project Files:
+## Project Files:
 
 * [Website Link](https://ananayg.github.io/multimodal_intrusion_detection/)
 * [Proposal](proposal)
