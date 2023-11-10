@@ -6,12 +6,11 @@ Home security cameras have been increasingly popular due to their effectiveness 
 
 ## 2. State of the Art & Its Limitations
 
-Battery-operated consumer surveillance products in the market today often present three key disadvantages: privacy concerns associated with cloud-based data processing, unsatisfactory battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. 
-
+Battery-operated consumer surveillance products in the market today often present three main issues: privacy concerns associated with cloud-based data processing, poor battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. Past attempts at ultra-low-power person detection primarily relied on specialized hardware designs, which are costly to deploy and inflexible for updates.
 
 ## 3. Novelty & Rationale
 
-What is new in your approach and why do you think it will be successful?
+Our approach combines the use of an always-on PIR sensor and a low-power monochrome image sensor to perform person detection locally at the edge, eliminating privacy concerns from offloading the data to the cloud
 
 ## 4. Potential Impact
 
