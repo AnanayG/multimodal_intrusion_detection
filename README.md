@@ -5,7 +5,7 @@ This project implements person detection by combining a PIR motion sensor and a 
 1. Christopher Yang
 2. Ananay Garg
 
-## Project Files:
+## Project Files
 
 * [Website](https://ananayg.github.io/multimodal_intrusion_detection/)
 * [Proposal](https://ananayg.github.io/multimodal_intrusion_detection/proposal)
