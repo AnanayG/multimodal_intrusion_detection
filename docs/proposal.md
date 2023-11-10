@@ -6,7 +6,9 @@ Home security cameras have been increasingly popular due to their effectiveness 
 
 ## 2. State of the Art & Its Limitations
 
-Battery-operated consumer surveillance products in the market today often present three main issues: privacy concerns associated with cloud-based data processing, poor battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. Past attempts at ultra-low-power person detection primarily relied on specialized hardware designs, which are costly to deploy and inflexible for updates.
+Battery-operated consumer surveillance products in the market today often present three main issues: privacy concerns associated with cloud-based data processing, poor battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. Typically, these systems rely solely on a PIR sensor to activate the system, triggering recording and subsequently transmission to the cloud for processing like person detection and facial recognition. However, this approach is not only inefficient due to a high rate of false positives, but also compromises privacy by uploading the footage online. Furthermore, access to many of these processing services requires a costly monthly subscription.
+
+On the other hand, there have been attempts at performing ultra-low-power person detection at the edge. Though effective in lowering power consumption, these methods often rely on specialized hardware accelerator designs, which are costly to implement and lack flexibility for updates. There is a definite need for a more flexible, general-purpose solution that utilizes readily-available, off-the-shelf components.
 
 ## 3. Novelty & Rationale
 
