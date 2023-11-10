@@ -6,7 +6,8 @@ Home security cameras have been increasingly popular due to their effectiveness 
 
 ## 2. State of the Art & Its Limitations
 
-How is it done today, and what are the limits of current practice?
+Battery-operated consumer surveillance products in the market today often present three key disadvantages: privacy concerns associated with cloud-based data processing, unsatisfactory battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. 
+
 
 ## 3. Novelty & Rationale
 
