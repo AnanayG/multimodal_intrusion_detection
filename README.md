@@ -1,5 +1,5 @@
 # Ultra Low Power Person Detection with MultiModal Wakeup Hierarchy for Battery-Powered Security Cameras
-Person deteciton using a PIR motion sensor and a monochrome image sensor in order to minimize main security camera uptime. Person detection done at the edge with CNN using TinyML techniques inaddition to some traditional CV techniques for light preprocessing. Platform use is off-the-shelf microcontroller XIAO ESP32S3 by SEEED Studio.
+This project implements person detection by combining a PIR motion sensor and a monochrome image sensor, aimed at reducing the uptime of primary security camera for recording. All inferences are done at the edge using TensorFlow Lite, applying TinyML techniques such as quantization and pruning. The system is built on an off-the-shelf microcontroller: XIAO ESP32S3 from SEEED Studio.
 
 ## Team
 1. Christopher Yang
