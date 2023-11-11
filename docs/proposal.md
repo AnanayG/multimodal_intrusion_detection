@@ -46,7 +46,7 @@ Target Power: [1] has a total system power consumption of 340 µW, which equates
 
 Calculations indicate that the power consumption of our system in deep sleep mode (microcontroller + PIR sensor) is approximately 250 uW. Over the span of a day, our system consumes 22J. Accounting for the standby energy consumption, our energy budget for active mode is 160 mJ/wakeup (over 50 wakeups). This serves as our traget for energy consumption during uptime.
 
-Tl;dr
+TL;DR
 Target Power: 250 µW (sleep), 160 mJ/wakeup (active)
 
 ## 8. Execution Plan
