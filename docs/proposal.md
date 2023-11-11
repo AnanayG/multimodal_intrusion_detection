@@ -34,10 +34,21 @@ The skills required are the following:
 * Proficiency with a variety of programming languages including C/C++ and Python (microPython and circuitPython)
 * Understanding of machine learning, in particularly model optimization for deployment on a microcontroller (TinyML)
 
-
 ## 7. Metrics of Success
 
-What are metrics by which you would check for success?
+System requirements: 
+(1) 50 wakeups/day (including false positives)
+(2) Consume less averaged power than the state of the art implementation (Quantified below)
+(3) Color camera stream for 1 min over wireless link (not included in power calculations)
+(4) System has wireless link capabilities to stream live video
+
+Target Power: [1] has a system power consumption of 340 uW, which equates to about 30J in a day. Excluding color camera color (not included in the reference as well), a successful project would have an average energy draw that is better than this.
+
+Rough back of the envelope calculations indicate that the deep sleep power consumption of our platform (processor + PIR sensor) is about 250 uW. Over a span of a day, this equates to 22J.
+
+So now budgeting for active power (over 50 wakeups), that leaves us with an energy consumption of 160 mJ/wakeup. This is the target for active power.
+
+Summarizing the discussion above, Target Power: 250 uW (sleep), 160 mJ/wakeup (active)
 
 ## 8. Execution Plan
 
