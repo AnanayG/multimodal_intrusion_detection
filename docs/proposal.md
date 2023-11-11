@@ -12,7 +12,7 @@ On the other hand, there have been attempts at performing ultra-low-power person
 
 ## 3. Novelty & Rationale
 
-Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage tinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability. The multi-modal nature of our project helps us optimise for energy rather than power, as done by most low-power academic papers.
+Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage tinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability. The multi-modal approach of our project focuses on energy rather than power optimization, with the latter done by most low-power related academic papers.
 
 ## 4. Potential Impact
 
