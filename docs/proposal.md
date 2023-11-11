@@ -20,7 +20,7 @@ Successful completion of this project will significantly reduce the power consum
 
 ## 5. Challenges
 
-What are the challenges and risks?
+As with all TinyML applications, the key challenges of this project are two: the limited processing resources for executing the neural network and the strict energy constraints of battery-powered scenarios. Person detection is a complex task usually done on powerful computers; however, our project operates with a microcontroller that has significantly less processing power and available memory by comparison, greatly limiting the size of the neural network it can support. Moreover, being battery-powered, our system must minimize the energy consumption to ensure longevity. Under such tight constraints, the challenge is to perform person detection with accuracy comparable to models run on PCs and servers, while consuming energy magnitudes lower than these machines and maintaining a reasonable latency.
 
 ## 6. Requirements for Success
 
