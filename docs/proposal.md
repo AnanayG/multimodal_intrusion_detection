@@ -38,17 +38,16 @@ The skills required are the following:
 
 System requirements: 
 * 50 wakeups/day (including false positives)
-* Consume less averaged power than the state of the art implementation (Quantified below)
-* Color camera stream for 1 min over wireless link (not included in power calculations)
-* System has wireless link capabilities to stream live video
+* Consumes less power on average than the state-of-the-art implementation (quantified below)
+* The ability to capture footage from the colored main camera for at least 1 minute (not included in power calculations)
+* The ability to transmit captured footage and live stream over the internet
 
-Target Power: [1] has a system power consumption of 340 uW, which equates to about 30J in a day. Excluding color camera color (not included in the reference as well), a successful project would have an average energy draw that is better than this.
+Target Power: [1] has a total system power consumption of 340 µW, which equates to an energy expenditure of about 30J per day. Excluding main colored camera (which is not present in the reference design), the criteria for success would be achieveing an average energy draw that is less than 340 µW.
 
-Rough back of the envelope calculations indicate that the deep sleep power consumption of our platform (processor + PIR sensor) is about 250 uW. Over a span of a day, this equates to 22J.
+Calculations indicate that the power consumption of our system in deep sleep mode (microcontroller + PIR sensor) is approximately 250 uW. Over the span of a day, our system consumes 22J. Accounting for the standby energy consumption, our energy budget for active mode is 160 mJ/wakeup (over 50 wakeups). This serves as our traget for energy consumption during uptime.
 
-So now budgeting for active power (over 50 wakeups), that leaves us with an energy consumption of 160 mJ/wakeup. This is the target for active power.
-
-Summarizing the discussion above, Target Power: 250 uW (sleep), 160 mJ/wakeup (active)
+Tl;dr
+Target Power: 250 µW (sleep), 160 mJ/wakeup (active)
 
 ## 8. Execution Plan
 
