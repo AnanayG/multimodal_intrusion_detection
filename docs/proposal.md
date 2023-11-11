@@ -75,4 +75,5 @@ Our project draws inspiration from the paper "An ultra-low-power image signal pr
 ## 10. References
 
 [1] An, H. et al. (2021) ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’, IEEE Journal of Solid-State Circuits, 56(4), pp. 1071–1081. doi:10.1109/jssc.2020.3041858. 
+
 [2] Chowdhery, A. et al. (2019) Visual wake words dataset, arXiv.org. Available at: https://arxiv.org/abs/1906.05721 (Accessed: 11 November 2023). 
