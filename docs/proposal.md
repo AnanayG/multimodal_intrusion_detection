@@ -49,8 +49,7 @@ The system can be further optimized to reduce energy consumption and provide adv
 
 ### 9.a. Papers
 
-The basis of our work is ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’[1].
-The work optimises power for person detection, face detection and face recognition. The paper achieves this by change detection and Neural network techniques, which is aligned with our goal. The paper achieves extremely low power numbers through custom ASIC design. The paper also provides valuable reference points for power consumption.
+Our project draws inspiration from the paper "An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks"[1]. This paper focuses on opimizing the power consumption for person detection, face detection, and facial recognition using change detection and neural network techniques, which is similar to our approach. The group was able to achive extremely low power consumption through a custom ASIC design. The paper also serves as a power consumption benchmark for our work.
 
 ### 9.b. Datasets
 
