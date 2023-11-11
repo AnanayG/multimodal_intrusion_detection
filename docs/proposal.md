@@ -12,11 +12,11 @@ On the other hand, there have been attempts at performing ultra-low-power person
 
 ## 3. Novelty & Rationale
 
-Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage tinyML techniques such as model pruning and quantization. Moreover, our system is built on off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability.
+Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage tinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability.
 
 ## 4. Potential Impact
 
-If the project is successful, what difference will it make, both technically and broadly?
+Successful completion of this project will significantly reduce the power consumption in security camera systems, facilitating the design of battery-operated or energy-harvesting models that are user-friendly, energy-efficient, and privacy-conscious. Additionally, by demonstrating the effectiveness of TinyML compared to traditional cloud-based ML, this project could motivate further research and development in the emerging field of TinyML.
 
 ## 5. Challenges
 
