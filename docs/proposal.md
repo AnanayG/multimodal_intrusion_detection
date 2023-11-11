@@ -24,7 +24,16 @@ As with all TinyML applications, the key challenges of this project are two: the
 
 ## 6. Requirements for Success
 
-What skills and resources are necessary to perform the project?
+The hardware required for this project is as follows:
+* [XIAO ESP32S3 Sense](https://www.seeedstudio.com/XIAO-ESP32S3-Sense-p-5639.html) by SEEED Studio (equipped with OV2640 camera module) 
+* [Arducam HM01B0 Monochrome QVGA SPI Camera Module](https://www.arducam.com/product/arducam-hm01b0-qvga-spi-camera-module-for-raspberry-pi-pico-2/)
+* Generic PIR motion sensor
+
+The skills required are the following:
+* Familiarity with embedded systems development, especially with sensing and power management
+* Proficiency with a variety of programming languages including C/C++ and Python (microPython and circuitPython)
+* Understanding of machine learning, in particularly model optimization for deployment on a microcontroller (TinyML)
+
 
 ## 7. Metrics of Success
 
