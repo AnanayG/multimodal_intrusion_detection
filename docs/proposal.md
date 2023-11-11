@@ -63,7 +63,7 @@ Our project draws inspiration from the paper "An ultra-low-power image signal pr
 
 ### 9.b. Datasets
 
-List datasets that you have identified and plan to use. Provide references (with full citation in the References section below).
+(Visual Wake Words Dataset)[https://arxiv.org/abs/1906.05721][2]
 
 ### 9.c. Software
 
