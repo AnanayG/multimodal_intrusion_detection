@@ -49,7 +49,8 @@ The system can be further optimized to reduce energy consumption and provide adv
 
 ### 9.a. Papers
 
-List the key papers that you have identified relating to your project idea, and describe how they related to your project. Provide references (with full citation in the References section below).
+The basis of our work is ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’[1].
+The work optimises power for person detection, face detection and face recognition. The paper achieves this by change detection and Neural network techniques, which is aligned with our goal. The paper achieves extremely low power numbers through custom ASIC design. The paper also provides valuable reference points for power consumption.
 
 ### 9.b. Datasets
 
