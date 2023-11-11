@@ -57,7 +57,10 @@ List datasets that you have identified and plan to use. Provide references (with
 
 ### 9.c. Software
 
-List softwate that you have identified and plan to use. Provide references (with full citation in the References section below).
+* Tensorflow Lite
+* [TensorFlow Lite Micro for Espressif Chipsets](https://github.com/espressif/esp-tflite-micro)
+* Visual Studio Code
+* Arduino IDE
 
 ## 10. References
 
