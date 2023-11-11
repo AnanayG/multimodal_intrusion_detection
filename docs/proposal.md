@@ -63,7 +63,7 @@ Our project draws inspiration from the paper "An ultra-low-power image signal pr
 
 ### 9.b. Datasets
 
-(Visual Wake Words Dataset)[https://arxiv.org/abs/1906.05721][2]
+[Visual Wake Words Dataset](https://arxiv.org/abs/1906.05721)[2]
 
 ### 9.c. Software
 
