@@ -5,7 +5,7 @@ show_downloads: true
 # google_analytics:[Your Google Analytics tracking ID]
 
 # Name of website
-title: Low-Power ML-based Multimodal Intrusion Detection
+title: Ultra-Low-Power Person Detection with TinyML
 logo: /media/camera.jpg
 description: Project for UCLA ECEM202A/CSM213A (Fall 2023)
 
