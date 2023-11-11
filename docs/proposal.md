@@ -62,4 +62,5 @@ List softwate that you have identified and plan to use. Provide references (with
 
 ## 10. References
 
-List references correspondign to citations in your text above. For papers please include full citation and URL. For datasets and software include name and URL.
+[1] An, H. et al. (2021) ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’, IEEE Journal of Solid-State Circuits, 56(4), pp. 1071–1081. doi:10.1109/jssc.2020.3041858. 
+[2] 
