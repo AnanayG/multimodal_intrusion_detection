@@ -1,6 +1,6 @@
 # Abstract
 
-This project implements person detection by combining a PIR motion sensor and a monochrome image sensor, aimed at reducing the uptime of the power-hungry primary camera used for recording. All inferences are done at the edge using a neural network built with TensorFlow Lite, applying TinyML techniques such as quantization and model pruning in order to optimize the NN model for microcontroller use. The system is built on an off-the-shelf microcontroller: XIAO ESP32S3 Sense from SEEED Studio, powered by the dual-core Xtensa® 32-bit LX7 MCU.
+This project implements ultra-low-power person detection by combining a PIR motion sensor and a monochrome image sensor, aimed at reducing the uptime of the power-hungry primary camera used for recording. Our approach puts the system to sleep, only activating the monochrome image sensor upon detecting motion, which then determines whether to wake up the main video camera based on the output of the person detection neural netwrok. All inferences are done at the edge using a neural network built with TensorFlow Lite Micro for Espressif Chipsets, preventing the need to offload sensitive footage to be processed on the cloud. The system is built on an off-the-shelf microcontroller: XIAO ESP32S3 Sense from SEEED Studio, powered by the dual-core Xtensa® 32-bit LX7 MCU.
 
 # Team
 
