@@ -37,10 +37,10 @@ The skills required are the following:
 ## 7. Metrics of Success
 
 System requirements: 
-(1) 50 wakeups/day (including false positives)
-(2) Consume less averaged power than the state of the art implementation (Quantified below)
-(3) Color camera stream for 1 min over wireless link (not included in power calculations)
-(4) System has wireless link capabilities to stream live video
+* 50 wakeups/day (including false positives)
+* Consume less averaged power than the state of the art implementation (Quantified below)
+* Color camera stream for 1 min over wireless link (not included in power calculations)
+* System has wireless link capabilities to stream live video
 
 Target Power: [1] has a system power consumption of 340 uW, which equates to about 30J in a day. Excluding color camera color (not included in the reference as well), a successful project would have an average energy draw that is better than this.
 
