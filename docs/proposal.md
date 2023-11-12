@@ -12,7 +12,7 @@ On the other hand, there have been attempts at performing ultra-low-power person
 
 ## 3. Novelty & Rationale
 
-Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage tinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability. The multi-modal approach of our project focuses on energy rather than power optimization, with the latter done by most low-power related academic papers.
+Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by keeping all footage directly on the device. To enable person detection on resource-limited devices, we leverage TinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability. The multi-modal approach of our project focuses on energy rather than power optimization, with the latter done by most low-power related academic papers.
 
 ## 4. Potential Impact
 
@@ -42,9 +42,9 @@ System requirements:
 * The ability to capture footage from the colored main camera for at least 1 minute (not included in power calculations)
 * The ability to transmit captured footage and live stream over the internet
 
-Target Power: [1] has a total system power consumption of 340 µW, which equates to an energy expenditure of about 30J per day. Excluding main colored camera (which is not present in the reference design), the criteria for success would be achieveing an average energy draw that is less than 340 µW.
+Target power: [1] has a total system power consumption of 340 µW, which equates to an energy expenditure of about 30J per day. Excluding main colored camera (which is not present in the reference design), the criteria for success would be achieving an average energy draw that is less than 340 µW.
 
-Calculations indicate that the power consumption of our system in deep sleep mode (microcontroller + PIR sensor) is approximately 250 uW. Over the span of a day, our system consumes 22J. Accounting for the standby energy consumption, our energy budget for active mode is 160 mJ/wakeup (over 50 wakeups). This serves as our traget for energy consumption during uptime.
+Calculations indicate that the power consumption of our system in deep sleep mode (microcontroller + PIR sensor) is approximately 250 µW. Over the span of a day, our system consumes 22J. Accounting for the standby energy consumption, our energy budget for active mode is 160 mJ/wakeup (over 50 wakeups). This serves as our target for energy consumption during uptime.
 
 TL;DR
 Target Power: 250 µW (sleep), 160 mJ/wakeup (active)
@@ -59,7 +59,7 @@ The system can be further optimized to reduce energy consumption and provide adv
 
 ### 9.a. Papers
 
-Our project draws inspiration from the paper "An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks"[1]. This paper focuses on opimizing the power consumption for person detection, face detection, and facial recognition using change detection and neural network techniques, which is similar to our approach. The group was able to achive extremely low power consumption through a custom ASIC design. The paper also serves as a power consumption benchmark for our work.
+Our project draws inspiration from the paper "An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks"[1]. This paper focuses on optimizing the power consumption for person detection, face detection, and facial recognition using change detection and neural network techniques, which is similar to our approach. The group was able to achieve extremely low power consumption through a custom ASIC design. The paper also serves as a power consumption benchmark for our work.
 
 ### 9.b. Datasets
 
