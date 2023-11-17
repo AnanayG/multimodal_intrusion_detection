@@ -10,6 +10,6 @@ This project implements ultra-low-power person detection by combining a PIR moti
 # Required Submissions
 
 * [Proposal](proposal)
-* [Midterm Checkpoint Presentation Slides](http://)
+* [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/1T94JXZVgJFIabmHr8B4qjJHL0yj9VK4nZ_z1BhGEb8g/edit?usp=sharing)
 * [Final Presentation Slides](http://)
 * [Final Report](report)
