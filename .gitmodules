@@ -1,0 +1,3 @@
+[submodule "software/esp-tflite-micro"]
+	path = software/esp-tflite-micro
+	url = git@github.com:AnanayG/esp-tflite-micro.git
