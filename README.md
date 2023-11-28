@@ -12,3 +12,8 @@ This project implements person detection by combining a PIR motion sensor and a 
 * [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/1T94JXZVgJFIabmHr8B4qjJHL0yj9VK4nZ_z1BhGEb8g/edit?usp=sharing)
 * [Final Presentation Slides](http://)
 * [Final Report](https://ananayg.github.io/multimodal_intrusion_detection/report)
+
+## Cloning the repo
+
+This main repo contains a reference to another repo that contains all the software code. You need to do a couple of extra steps to ensure proper initilisation.
+Once you clone the repo. Please do a 'git submodule init' followed by 'git submodule update' to initialise all the submodules.
