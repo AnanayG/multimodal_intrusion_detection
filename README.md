@@ -14,7 +14,10 @@ This project implements person detection by combining a PIR motion sensor and a 
 * [Final Report](https://ananayg.github.io/multimodal_intrusion_detection/report)
 * [Demo Video](https://www.youtube.com/watch?v=8JuSE7JUu0g&t=1s&ab_channel=AnanayGarg)
 
-## Cloning the repo
+## Software Submmodule/Cloning the repo
 
-This main repo contains a reference to another repo that contains all the software code. You need to do a couple of extra steps to ensure proper initilisation.
+As the software code of our repo was heavily dervied from exisiting person detection work, We cloned the 'espressif/esp-tflite-micro' repo and added our commits on top of it. All of our commit history realted to software code lies in that github repository.
+This main repo (under software/) contains a reference to another repo that contains all the software code.
+
+You need to do a couple of extra steps to ensure proper initilisation.
 Once you clone the repo. Please do a 'git submodule init' followed by 'git submodule update' to initialise all the submodules.
