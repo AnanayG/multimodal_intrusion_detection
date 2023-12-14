@@ -9,7 +9,7 @@
 
 # Abstract
 
-Provide a brief overview of the project objhectives, approach, and results.
+This project aims to implement a multimodal person detection system for wireless security camera applications using a PIR motion sensor and an image sensor controlled by two XIAO ESP32S3 microcontrollers. The goal is to perform person detection at the edge while maintaining a power consumption comparable to the state-of-the-art vision-only approach (at ~170 µW). This is done by putting the system to deep sleep whenever possible while optimizing the energy consumption of each wakeup event triggered by motion. For a power budget of 1 mW, our system allows for nearly 250 wakeups per day, which is sufficient for typical security camera applications.
 
 # 1. Introduction
 
