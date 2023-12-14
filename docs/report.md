@@ -62,7 +62,7 @@ The Paper ‘NeuriCam: Key-Frame Video Super-Resolution and Colorization for IoT
  
 There are plenty of techniques to reduce power consumption in computer vision/ML based approaches like parameter quantisation, filter compression, knowledge distillation, hierarchical neural network. These approaches were not explored in our approach as the stimulus we expect is 20-60 times/day which is very sparse. We expected the passive power to be a large component of our energy budget and the NN by itself to be a very small fraction of the total energy cost. This also turned out to be the case as detailed in the later sections in the report. 
 
-The generation expectation of the power characteristics when trading off between resolution, color, SNR applies to the choice of the camera as well. There is existing work to help with power-aware image compression and motion detection [Link](https://ieeexplore.ieee.org/document/745120) and many commercial cameras use advanced on-device compression including neural networks to reduce the data rate. Additionally there are approaches that use RL to detect the optimal moment to capture the key-frame [Link](https://www.researchgate.net/publication/347359703_Self-Supervised_Learning_to_Detect_Key_Frames_in_Videos), which can also help with power optimisation. Albeit helpful, these approaches were also not considered for our project as our active power consumption of the camera is relatively very low.
+The generation expectation of the power characteristics when trading off between resolution, color, SNR applies to the choice of the camera as well. There is existing work to help with power-aware image compression and motion detection ([Link](https://ieeexplore.ieee.org/document/745120)) and many commercial cameras use advanced on-device compression including neural networks to reduce the data rate. Additionally there are approaches that use RL to detect the optimal moment to capture the key-frame ([Link](https://www.researchgate.net/publication/347359703_Self-Supervised_Learning_to_Detect_Key_Frames_in_Videos)), which can also help with power optimisation. Albeit helpful, these approaches were also not considered for our project as our active power consumption of the camera is relatively very low.
 
 Finally, as mentioned before, our project also draws inspiration from the paper “An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks”[1]. This paper focuses on optimizing the power consumption for person detection, face detection, and facial recognition using change detection and neural network techniques, which is similar to our approach. The group was able to achieve extremely low power consumption through a custom ASIC design. The paper also serves as a power consumption benchmark for our work.
 
@@ -82,7 +82,7 @@ On the other hand, the workflow of the PD_XIAO subsystem is mostly sequential. U
 
 ![prototype](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/prototype.png)
 
-Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](##-technical-challenges)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
+Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](#3-technical-approach)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
 
 ## 3.1 Software Framework
 
@@ -173,12 +173,12 @@ In conclusion, we consider our project a success despite not strictly meeting th
 
 * An, H. et al. (2021) ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’, IEEE Journal of Solid-State Circuits, 56(4), pp. 1071–1081. doi:10.1109/jssc.2020.3041858.
 * Chowdhery, A. et al. (2019) Visual wake words dataset, arXiv.org. Available at: https://arxiv.org/abs/1906.05721 (Accessed: 11 November 2023).
-* [ESP TFLite Micro GitHub Repository] (https://github.com/espressif/esp-tflite-micro)
-* [ESP32S3 Datasheet] (https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
-* [ESP32S3 Technical Reference Manual] (https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf)
-* [ESP-IDF GitHub Repository] (https://github.com/espressif/esp-idf)
-* [SEEED Studio XIAO ESP32S3 Wiki] (https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
-* [Panasonic PIR Sensor Datasheet] (https://api.pim.na.industrial.panasonic.com/file_stream/main/fileversion/251032)
-* [ESP32-CAM Person Detection Experiment With TensorFlow Lite] (https://www.instructables.com/ESP32-CAM-Person-Detection-Expreiment-With-TensorF/)
-* [TinyML Talks - Yung-Hsiang Lu: Low-Power Computer Vision] (https://www.youtube.com/watch?v=GdAs4P_0wEk&t=137s&ab_channel=tinyML)
+* [ESP TFLite Micro GitHub Repository](https://github.com/espressif/esp-tflite-micro)
+* [ESP32S3 Datasheet](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
+* [ESP32S3 Technical Reference Manual](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf)
+* [ESP-IDF GitHub Repository](https://github.com/espressif/esp-idf)
+* [SEEED Studio XIAO ESP32S3 Wiki](https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
+* [Panasonic PIR Sensor Datasheet](https://api.pim.na.industrial.panasonic.com/file_stream/main/fileversion/251032)
+* [ESP32-CAM Person Detection Experiment With TensorFlow Lite](https://www.instructables.com/ESP32-CAM-Person-Detection-Expreiment-With-TensorF/)
+* [TinyML Talks - Yung-Hsiang Lu: Low-Power Computer Vision](https://www.youtube.com/watch?v=GdAs4P_0wEk&t=137s&ab_channel=tinyML)
 
