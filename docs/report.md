@@ -67,19 +67,19 @@ Finally, as mentioned before, our project also draws inspiration from the paper 
 
 # 3. Technical Approach
 
-![Circuit_Diagram]media/general circuit diagram.png
+![Circuit_Diagram](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/general%20circuit%20diagram.png)
 
 The general circuit diagram above outlines the main components of our system. The hardware of our system is partitioned into two: PIR_XIAO circuit and PD_XIAO circuit. The PIR_XIAO circuit remains in an always-on state, whereas the PD_XIAO circuit remains in an always-off state. PIR_XIAO circuit controls the power delivery to PD_XIAO circuit using a P-MOSFET as a high-side switch based on motion events detected. PD_XIAO uses a GPIO interconnection between the two XIAOs to signal for power cutoff upon task completion.
 
-![PIR_XIAO]media/PIR_XIAO_loop.png
+![PIR_XIAO](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/PIR_XIAO_loop.png)
 
 PIR_XIAO subsystem functions as a state machine that controls power delivery to PD_XIAO based on the output of the PIR sensor attached via GPIO. Normally, the system remains in deep sleep with an external GPIO interrupt configured to the output of the PIR sensor. Upon detecting motion, the subsystem enables power delivery by pulling down the GPIO pin connected to the gate pin of the P-MOSFET. Next, the system immediately returns to deep sleep with an external interrupt configured to the GPIO interconnection between the two subsystems (designated PD_done signal). After the PD_XIAO subsystem completes its task, the PD_done signal will be generated through said GPIO interconnection, waking up PIR_XIAO from deep sleep. Afterwards, power delivery to PD_XIAO will be cut off, and the system will either return to deep sleep with PIR wakeup if no more motion is detected or initiate a new cycle if another motion event immediately follows.
 
-![PD_XIAO]media/PD_XIAO_loop.png
+![PD_XIAO](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/PD_XIAO_loop.png)
 
 On the other hand, the workflow of the PD_XIAO subsystem is mostly sequential. Upon receiving power, the system will first perform the necessary initialization before executing the user program. To minimize system uptime, we parallelize the program by running ML model initialization and camera initialization followed by image capturing on different cores at the same time. After which, the person detection model is executed on the frame captured. Based on the inference result, the subsystem will optionally begin footage capturing, processing, and storing/transmitting when a person is detected. Lastly, the PD_done signal will be generated on the GPIO interconnection to signal for power cutoff.
 
-![prototype]media/prototype.png
+![prototype](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/prototype.png)
 
 Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](##-technical-challenges)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
 
@@ -109,7 +109,7 @@ Our next approach was to employ an external hardware circuitry that controls pow
 
 ### 3.2.3 PIR Erratic Output
 
-![PIR_output]media/PIR output.png
+![PIR_output](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/PIR%20output.png)
 
 The PIR sensor used in this project has an erratic output behavior. When a single swift motion is produced within the detection range, no matter the distance from the sensor, the output will almost always contain 2-3 pulses, each lasting around 0.5-3 seconds. This behavior causes the PIR_XIAO subsystem to falsely enable power delivery multiple times in a row, which leads to unnecessary energy consumption.
 
@@ -119,7 +119,7 @@ The final solution we chose was to simply include a software delay. A delay in e
 
 ### 3.2.4 GPIO Undefined State During Power On
 
-![rc_delay]docs/media/RC delay.png
+![rc_delay](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/docs/media/RC%20delay.png)
 
 In our final setup, the PIR_XIAO subsystem controls power delivery to the PD_XIAO subsystem. A GPIO HIGH signal is initiated by PD_XIAO to signal PIR_XIAO to cut off power. However, when PD_XIAO first receives power, the GPIO pins are all in an undefined state. Through experimentation, we found that the voltage on the GPIO interconnection for PD_done signal is roughly 2.8V during initialization, above the threshold voltage for a HIGH state. This causes power to be shut off immediately after it is enabled, due to PIR_XIAO receiving a false PD_done signal. This is demonstrated on the image above: the blue signal is the output of the PD_done signal with the initial peak generated during initialization and the second peak being the true PD_done signal.
 
