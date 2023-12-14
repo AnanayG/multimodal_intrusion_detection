@@ -82,7 +82,7 @@ On the other hand, the workflow of the PD_XIAO subsystem is mostly sequential. U
 
 ![prototype](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/prototype.png)
 
-Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](#3-technical-approach)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
+Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](#32-technical-challenges)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
 
 ## 3.1 Software Framework
 
