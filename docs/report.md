@@ -163,11 +163,22 @@ In conclusion, we consider our project a success despite not strictly meeting th
 
 # 6. Demo Links
 
-* Master Demo Video: https://www.youtube.com/watch?si=UEJS8G_MfGbzbT3T&v=8JuSE7JUu0g&feature=youtu.be
-* 5V Demo Video: https://youtube.com/shorts/ZmwHzCMsa_o?feature=share 
-* Wifi Streaming Demo Video: https://www.youtube.com/watch?v=NmRjGxvr8ks
-* System power data: https://docs.google.com/spreadsheets/d/1SeqJhA1LRMm0-gP1tuYFk-gqm2a6v0A1QVVGwjIOnUg/edit?usp=sharing
-* Final Presentation Link: https://docs.google.com/presentation/d/1U2bdHlef-A1cob_oj03bhjhw77Q7Prq9A0cpEgVMt5c/edit?usp=sharing
+* [Master Demo Video](https://www.youtube.com/watch?si=UEJS8G_MfGbzbT3T&v=8JuSE7JUu0g&feature=youtu.be)
+* [5V Demo Video](https://youtube.com/shorts/ZmwHzCMsa_o?feature=share)
+* [Wifi Streaming Demo Video](https://www.youtube.com/watch?v=NmRjGxvr8ks)
+* [System power data](https://docs.google.com/spreadsheets/d/1SeqJhA1LRMm0-gP1tuYFk-gqm2a6v0A1QVVGwjIOnUg/edit?usp=sharing)
+* [Final Presentation Link](https://docs.google.com/presentation/d/1U2bdHlef-A1cob_oj03bhjhw77Q7Prq9A0cpEgVMt5c/edit?usp=sharing)
   
 # 7. References
+
+* An, H. et al. (2021) ‘An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks’, IEEE Journal of Solid-State Circuits, 56(4), pp. 1071–1081. doi:10.1109/jssc.2020.3041858.
+* Chowdhery, A. et al. (2019) Visual wake words dataset, arXiv.org. Available at: https://arxiv.org/abs/1906.05721 (Accessed: 11 November 2023).
+* [ESP TFLite Micro GitHub Repository] (https://github.com/espressif/esp-tflite-micro)
+* [ESP32S3 Datasheet] (https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
+* [ESP32S3 Technical Reference Manual] (https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf)
+* [ESP-IDF GitHub Repository] (https://github.com/espressif/esp-idf)
+* [SEEED Studio XIAO ESP32S3 Wiki] (https://wiki.seeedstudio.com/xiao_esp32s3_getting_started/)
+* [Panasonic PIR Sensor Datasheet] (https://api.pim.na.industrial.panasonic.com/file_stream/main/fileversion/251032)
+* [ESP32-CAM Person Detection Experiment With TensorFlow Lite] (https://www.instructables.com/ESP32-CAM-Person-Detection-Expreiment-With-TensorF/)
+* [TinyML Talks - Yung-Hsiang Lu: Low-Power Computer Vision] (https://www.youtube.com/watch?v=GdAs4P_0wEk&t=137s&ab_channel=tinyML)
 
