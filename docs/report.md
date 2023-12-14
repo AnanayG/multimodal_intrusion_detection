@@ -146,7 +146,7 @@ The following graph showcases the current consumption of 3 consecutive wakeup ev
 
 ![energy_disttribution](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/current%20consumption%20-%203%20peaks.png)
 
-The main peak is partitioned into individual phases. The regions of operation are indicated in the graph below. Note that the person detection neural network consumes almost the most amount of current, but only takes 58ms to execute. The circuit delay portion also consumes significant current, but it takes 381ms to execute. As previously mentioned in the [Technical Challenges] (### GPIO Undefined State During Power On) section, we have removed the RC circuit in our final prototype, hence the current consumption induced by the circuit delay is no longer relevant. This has also been demonstrated in the [second demo video](#6. Demo Links/Project Resources).
+The main peak is partitioned into individual phases. The regions of operation are indicated in the graph below. Note that the person detection neural network consumes almost the most amount of current, but only takes 58ms to execute. The circuit delay portion also consumes significant current, but it takes 381ms to execute. As previously mentioned in [this](#324-gpio-undefined-state-during-power-on) section, we have removed the RC circuit in our final prototype, hence the current consumption induced by the circuit delay is no longer relevant. This has also been demonstrated in the [second demo video](#6. Demo Links/Project Resources).
 
 With the RC circuit removed, the active ON-state current consumption per wakeup cycle is reduced to 225mJ/wakeup, which allows for a 42 wakeups/day.
 
