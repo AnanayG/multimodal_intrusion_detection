@@ -61,13 +61,80 @@ The Paper ‘NeuriCam: Key-Frame Video Super-Resolution and Colorization for IoT
  
 There are plenty of techniques to reduce power consumption in computer vision/ML based approaches like parameter quantisation, filter compression, knowledge distillation, hierarchical neural network. These approaches were not explored in our approach as the stimulus we expect is 20-60 times/day which is very sparse. We expected the passive power to be a large component of our energy budget and the NN by itself to be a very small fraction of the total energy cost. This also turned out to be the case as detailed in the later sections in the report. 
 
-The generation expectation of the power characteristics when trading off between resolution, color, SNR applies to the choice of the camera as well. There is existing work to help with power-aware image compression and motion detection (Link) and many commercial cameras use advanced on-device compression including neural networks to reduce the data rate. Additionally there are approaches that use RL to detect the optimal moment to capture the key-frame(Link), which can also help with power optimisation. Albeit helpful, these approaches were also not considered for our project as our active power consumption of the camera is relatively very low.
+The generation expectation of the power characteristics when trading off between resolution, color, SNR applies to the choice of the camera as well. There is existing work to help with power-aware image compression and motion detection (https://ieeexplore.ieee.org/document/745120) and many commercial cameras use advanced on-device compression including neural networks to reduce the data rate. Additionally there are approaches that use RL to detect the optimal moment to capture the key-frame(https://www.researchgate.net/publication/347359703_Self-Supervised_Learning_to_Detect_Key_Frames_in_Videos), which can also help with power optimisation. Albeit helpful, these approaches were also not considered for our project as our active power consumption of the camera is relatively very low.
 
 Finally, as mentioned before, our project also draws inspiration from the paper “An ultra-low-power image signal processor for hierarchical image recognition with deep neural networks”[1]. This paper focuses on optimizing the power consumption for person detection, face detection, and facial recognition using change detection and neural network techniques, which is similar to our approach. The group was able to achieve extremely low power consumption through a custom ASIC design. The paper also serves as a power consumption benchmark for our work.
 
 # 3. Technical Approach
 
+![Circuit_Diagram]media/general circuit diagram.png
+
+The general circuit diagram above outlines the main components of our system. The hardware of our system is partitioned into two: PIR_XIAO circuit and PD_XIAO circuit. The PIR_XIAO circuit remains in an always-on state, whereas the PD_XIAO circuit remains in an always-off state. PIR_XIAO circuit controls the power delivery to PD_XIAO circuit using a P-MOSFET as a high-side switch based on motion events detected. PD_XIAO uses a GPIO interconnection between the two XIAOs to signal for power cutoff upon task completion.
+
+![PIR_XIAO]media/PIR_XIAO_loop.png
+
+PIR_XIAO subsystem functions as a state machine that controls power delivery to PD_XIAO based on the output of the PIR sensor attached via GPIO. Normally, the system remains in deep sleep with an external GPIO interrupt configured to the output of the PIR sensor. Upon detecting motion, the subsystem enables power delivery by pulling down the GPIO pin connected to the gate pin of the P-MOSFET. Next, the system immediately returns to deep sleep with an external interrupt configured to the GPIO interconnection between the two subsystems (designated PD_done signal). After the PD_XIAO subsystem completes its task, the PD_done signal will be generated through said GPIO interconnection, waking up PIR_XIAO from deep sleep. Afterwards, power delivery to PD_XIAO will be cut off, and the system will either return to deep sleep with PIR wakeup if no more motion is detected or initiate a new cycle if another motion event immediately follows.
+
+![PD_XIAO]media/PD_XIAO_loop.png
+
+On the other hand, the workflow of the PD_XIAO subsystem is mostly sequential. Upon receiving power, the system will first perform the necessary initialization before executing the user program. To minimize system uptime, we parallelize the program by running ML model initialization and camera initialization followed by image capturing on different cores at the same time. After which, the person detection model is executed on the frame captured. Based on the inference result, the subsystem will optionally begin footage capturing, processing, and storing/transmitting when a person is detected. Lastly, the PD_done signal will be generated on the GPIO interconnection to signal for power cutoff.
+
+![prototype]media/prototype.png
+
+Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](##-technical-challenges)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
+
+## 3.1 Software Framework
+
+The development environment used for this project was [ESP-IDF](https://github.com/espressif/esp-idf), a development framework provided by Espressif, the company that produced ESP32S3. The programming language used is C/C++.
+
+The person detection model used in our system is a pre-trained model provided by ESP TFLite Micro] (https://github.com/espressif/esp-tflite-micro). ESP TFLite Micro is an optimized version of Tensorflow Lite Micro specifically for ESP32 devices. Since this model is highly optimized and well suited for our specific use case, we implemented it into our code as is.
+
+The person detection model takes in a single 96x96 grayscale image. The OV2640 camera module on PD_XIAO has the ability to directly output images in this format. The camera module is initially configured to store its frame buffers on the internal RAM for faster access. Before capturing footage when a person is detected, the camera module is reconfigured to a higher resolution in RGB at runtime with frame buffers allocated onto the 8MB PSRAM due to increased memory usage.
+
+The footage capturing and streaming capabilities are demonstrated in [demo video 3](https://www.youtube.com/watch?v=NmRjGxvr8ks).
+
+## 3.2 Technical Challenges
+
+Here we outline a selection of challenges we faced during the development of this project and the solutions we employed to address these challenges.
+
+### 3.2.1 Monochrome Camera Module Sourcing Issues
+
+In our original design, we planned on using a standalone monochrome camera module to perform person detection with the intention of reducing energy consumption by keeping the main colored camera in sleep. However, the first module we purchased was incompatible with our system, and we also faced difficulties sourcing for another module. Ultimately, we decided to capture the image for person detection on our main camera instead. The energy consumption penalty is in fact insignificant compared to the rest of the system while greatly simplifying the development process.
+
+### 3.2.2 Deep Sleep Power Consumption Over Budget
+
+Our original design only uses a single XIAO ESP32S3 Sense to both interface with a PIR sensor and perform person detection. However, we discovered that the deep sleep power consumption was 3.8V at 3.00mA, much higher than the 3.8V at 14μA of our expectation. This was due to the Sense board module that the camera is attached to consuming excess current at all times. We attempted to isolate all GPIO pins used by the Sense board during deep sleep, however, since its power circuitry is directly connected to the 3.3V power rail, we were unable to reduce the current consumption.
+
+Our next approach was to employ an external hardware circuitry that controls power delivery to the XIAO. We experimented with designing a custom digital circuit with microamp current consumption, which has been proven very difficult given the resources available and the timeframe. As a result, we opted to use a microcontroller for this purpose, specifically another XIAO ESP32S3. The control of power delivery is done using a P-MOSFET as a high-side switch connected to a GPIO pin. A high-side switching setup completely cuts off the access to 3.3V on the PD_XIAO subsystem, greatly reducing leakage current. The signaling mechanism for power cutoff is done using GPIO interconnection.
+
+### 3.2.3 PIR Erratic Output
+
+![PIR_output]media/PIR output.png
+
+The PIR sensor used in this project has an erratic output behavior. When a single swift motion is produced within the detection range, no matter the distance from the sensor, the output will almost always contain 2-3 pulses, each lasting around 0.5-3 seconds. This behavior causes the PIR_XIAO subsystem to falsely enable power delivery multiple times in a row, which leads to unnecessary energy consumption.
+
+Our initial solution was to shorten the pulses using a small capacitor in series. When the PIR output is switched to HIGH, the capacitor will quickly charge up and disconnect the circuit, effectively shortening the pulse. However, this approach was ultimately unsuccessful because the output LOW time in between of each pulse was too long, allowing the capacitor to fully discharge in between of each pulse. In the end, there are still multiple pulses on the output, just shorter in duration.
+
+The final solution we chose was to simply include a software delay. A delay in energy-constrained microcontroller development is extremely costly. To address this, instead of having the system idle during the delay, we put the PIR_XIAO subsystem to deep sleep with a timer wakeup. This allows the subsystem to only suffer a slight penalty of a few tens of milliseconds of an extra wakeup while effectively debouncing the PIR sensor. In addition, this delay also serves as a way to limit the frequency that person detection can be performed, preventing unnecessary energy consumption if the system were to malfunction.
+
+### 3.2.4 GPIO Undefined State During Power On
+
+![rc_delay]docs/media/RC delay.png
+
+In our final setup, the PIR_XIAO subsystem controls power delivery to the PD_XIAO subsystem. A GPIO HIGH signal is initiated by PD_XIAO to signal PIR_XIAO to cut off power. However, when PD_XIAO first receives power, the GPIO pins are all in an undefined state. Through experimentation, we found that the voltage on the GPIO interconnection for PD_done signal is roughly 2.8V during initialization, above the threshold voltage for a HIGH state. This causes power to be shut off immediately after it is enabled, due to PIR_XIAO receiving a false PD_done signal. This is demonstrated on the image above: the blue signal is the output of the PD_done signal with the initial peak generated during initialization and the second peak being the true PD_done signal.
+
+We have attempted to initialize this GPIO pin on PD_XIAO as early as possible in the bootup sequence to no avail. As a first solution, we introduced an RC delay circuit that ensures that the voltage on the line will not rise above the HIGH threshold during initialization. However, this has induced a heavy latency penalty to power shut off due to the nature of an RC delay circuit. Our final solution was to implement a software delay in the PIR_XIAO code that blocks the PD_done signal for a sufficient amount of time after first enabling power delivery. Since the PD_XIAO subsystem consumes current in the magnitude of hundreds of milliamps, keeping PIR_XIAO in idle briefly during this has minimal energy consumption penalty. 
+
 # 4. Evaluation and Results
+
+The primary goal of the project was to achieve a multimodal intrusion detection system in the ultra low power regime (sub 1 mW regime).
+
+As mentioned previously, the state of the art vision-only custom-ASIC approach has a total system power consumption of 170µW, which is equivalent to 14688mJ/day [1]. Initially, we decided that the metric of successful this project would be to achieve a total energy consumption within this budget while achieving 50 wakeups/day.
+
+We partition our system to two behavioral states: a passive deep sleep state and an active ON-state. The current consumption is measured using a Keithley 2601A source meter.
+
+In the deep sleep state, only the PIR_XIAO subsystem remains active, consuming a current of 18µA in total at 3.3V, out of which, 12µA is consumed by the PIR_XIAO in deep sleep, 6µA is consumed by the PIR sensor in idle state. In total, this sums up to 5132mJ of energy per day that has to be allocated to the passive deep sleep state.
+
 
 # 5. Discussion and Conclusions
 
