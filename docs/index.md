@@ -13,4 +13,7 @@ This project implements ultra-low-power person detection by combining a PIR moti
 * [Midterm Checkpoint Presentation Slides](https://docs.google.com/presentation/d/1T94JXZVgJFIabmHr8B4qjJHL0yj9VK4nZ_z1BhGEb8g/edit?usp=sharing)
 * [Final Presentation Slides](https://docs.google.com/presentation/d/1U2bdHlef-A1cob_oj03bhjhw77Q7Prq9A0cpEgVMt5c/edit?usp=sharing)
 * [Final Report](report)
-* [Demo Video](https://www.youtube.com/watch?v=8JuSE7JUu0g&t=1s&ab_channel=AnanayGarg)
+* Demo Videos:
+  * [Master Demo Video](https://www.youtube.com/watch?si=UEJS8G_MfGbzbT3T&v=8JuSE7JUu0g&feature=youtu.be)
+  * [5V Demo Video](https://youtube.com/shorts/ZmwHzCMsa_o?feature=share)
+  * [Wifi Streaming Demo Video](https://www.youtube.com/watch?v=NmRjGxvr8ks)
