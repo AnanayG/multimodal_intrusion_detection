@@ -5,7 +5,8 @@
 * [Technical Approach](#3-technical-approach)
 * [Evaluation and Results](#4-evaluation-and-results)
 * [Discussion and Conclusions](#5-discussion-and-conclusions)
-* [References](#6-references)
+* [Demo Links](#6-demo-links)
+* [References](#7-references)
 
 # Abstract
 
@@ -119,7 +120,7 @@ The final solution we chose was to simply include a software delay. A delay in e
 
 ### 3.2.4 GPIO Undefined State During Power On
 
-![rc_delay](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/docs/media/RC%20delay.png)
+![rc_delay](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/RC%20delay.png)
 
 In our final setup, the PIR_XIAO subsystem controls power delivery to the PD_XIAO subsystem. A GPIO HIGH signal is initiated by PD_XIAO to signal PIR_XIAO to cut off power. However, when PD_XIAO first receives power, the GPIO pins are all in an undefined state. Through experimentation, we found that the voltage on the GPIO interconnection for PD_done signal is roughly 2.8V during initialization, above the threshold voltage for a HIGH state. This causes power to be shut off immediately after it is enabled, due to PIR_XIAO receiving a false PD_done signal. This is demonstrated on the image above: the blue signal is the output of the PD_done signal with the initial peak generated during initialization and the second peak being the true PD_done signal.
 
@@ -135,7 +136,38 @@ We partition our system to two behavioral states: a passive deep sleep state and
 
 In the deep sleep state, only the PIR_XIAO subsystem remains active, consuming a current of 18µA in total at 3.3V, out of which, 12µA is consumed by the PIR_XIAO in deep sleep, 6µA is consumed by the PIR sensor in idle state. In total, this sums up to 5132mJ of energy per day that has to be allocated to the passive deep sleep state.
 
+![energy_disttribution](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/energy%20distribution.png)
+
+The active ON-state current consumption is graphed below. By taking an average of the current consumption across the duration of a wakeup event, we were able to estimate the energy consumption of each wakeup event to be 395mJ.
+
+For an aforementioned 14688mJ of power budget, we are able to achieve 24 wakeups per day. Note that the energy consumption calculation for active ON-state does not include footage capturing or any related processing and transmission, as the energy optimization of these areas is out of the scope of this project.
+
+The following graph showcases the current consumption of 3 consecutive wakeup events. Each wakeup event contains a main peak (shown in magenta) and a subsequent peak (shown in red). The main peak contains the main person detection tasks, whereas the subsequent peak corresponds to a brief wakeup event of the PIR_XIAO after debouncing the PIR sensor using a timer wakeup.
+
+![energy_disttribution](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/current%20consumption%20-%203%20peaks.png)
+
+The main peak is partitioned into individual phases. The regions of operation are indicated in the graph below. Note that the person detection neural network consumes almost the most amount of current, but only takes 58ms to execute. The circuit delay portion also consumes significant current, but it takes 381ms to execute. As previously mentioned in the [Technical Challenges] (### GPIO Undefined State During Power On) section, we have removed the RC circuit in our final prototype, hence the current consumption induced by the circuit delay is no longer relevant. This has also been demonstrated in the [second demo video](#6. Demo Links/Project Resources).
+
+With the RC circuit removed, the active ON-state current consumption per wakeup cycle is reduced to 225mJ/wakeup, which allows for a 42 wakeups/day.
+
+![main_peak](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/main%20peak.png)
+![energy_energy_per_region](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/duration%2Benergy%20of%20each%20region.png)
 
 # 5. Discussion and Conclusions
 
-# 6. References
+In the end, we achieved 42 wakeups/day at 170µW power consumption. Even though we were not able to achieve 50 wakeups/day as we previously planned for, we are close enough to the target to demonstrate the effectiveness of our design. In addition, our project is done only using off-the-shelf components; the fact that we are able to compete with a custom ASIC design clearly demonstrates the superiority of our multimodal approach to person detection compared to the traditional vision-only approach.
+
+In the TinyML community, 1mW is considered a significant milestone in terms of power consumption. After achieving this threshold, the system can easily last “forever” with the help of minimal energy harvesting. For a power budget of 1mW, our system can achieve around 247 wakeups/day, which is more than sufficient for the typical security application. With the help of a small solar panel, our security camera prototype will be able to provide a maintenance-free user experience.
+
+In conclusion, we consider our project a success despite not strictly meeting the goal we first set out to reach. Since many significant challenges we faced during the project were fundamentally due to the limitations of off-the-shelf components, if we were to use custom hardware similar to that in state-of-the-art implementations today, such as implementing PIR_XIAO subsystem with an FPGA, we will undoubtedly achieve an even more impressive power consumption.
+
+# 6. Demo Links
+
+* Master Demo Video: https://www.youtube.com/watch?si=UEJS8G_MfGbzbT3T&v=8JuSE7JUu0g&feature=youtu.be
+* 5V Demo Video: https://youtube.com/shorts/ZmwHzCMsa_o?feature=share 
+* Wifi Streaming Demo Video: https://www.youtube.com/watch?v=NmRjGxvr8ks
+* System power data: https://docs.google.com/spreadsheets/d/1SeqJhA1LRMm0-gP1tuYFk-gqm2a6v0A1QVVGwjIOnUg/edit?usp=sharing
+* Final Presentation Link: https://docs.google.com/presentation/d/1U2bdHlef-A1cob_oj03bhjhw77Q7Prq9A0cpEgVMt5c/edit?usp=sharing
+  
+# 7. References
+
