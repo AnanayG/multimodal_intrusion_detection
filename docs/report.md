@@ -84,7 +84,7 @@ On the other hand, the workflow of the PD_XIAO subsystem is mostly sequential. U
 
 Here we showcase the prototype and the corresponding circuit diagram. Initially, we made use of a few RC circuits in order to address a few issues (outlined below in [Technical Challenge](#32-technical-challenges)), however, in our final prototype, no external RC circuit is needed. The green LED used in this prototype is for indicating PD_XIAO subsystem ON/OFF status.
 
-## 3.1 Software Framework
+## 3.1. Software Framework
 
 The development environment used for this project was [ESP-IDF](https://github.com/espressif/esp-idf), a development framework provided by Espressif, the company that produced ESP32S3. The programming language used is C/C++.
 
@@ -94,21 +94,21 @@ The person detection model takes in a single 96x96 grayscale image. The OV2640 c
 
 The footage capturing and streaming capabilities are demonstrated in [demo video 3](https://www.youtube.com/watch?v=NmRjGxvr8ks).
 
-## 3.2 Technical Challenges
+## 3.2. Technical Challenges
 
 Here we outline a selection of challenges we faced during the development of this project and the solutions we employed to address these challenges.
 
-### 3.2.1 Monochrome Camera Module Sourcing Issues
+### 3.2.1. Monochrome Camera Module Sourcing Issues
 
 In our original design, we planned on using a standalone monochrome camera module to perform person detection with the intention of reducing energy consumption by keeping the main colored camera in sleep. However, the first module we purchased was incompatible with our system, and we also faced difficulties sourcing for another module. Ultimately, we decided to capture the image for person detection on our main camera instead. The energy consumption penalty is in fact insignificant compared to the rest of the system while greatly simplifying the development process.
 
-### 3.2.2 Deep Sleep Power Consumption Over Budget
+### 3.2.2. Deep Sleep Power Consumption Over Budget
 
 Our original design only uses a single XIAO ESP32S3 Sense to both interface with a PIR sensor and perform person detection. However, we discovered that the deep sleep power consumption was 3.8V at 3.00mA, much higher than the 3.8V at 14μA of our expectation. This was due to the Sense board module that the camera is attached to consuming excess current at all times. We attempted to isolate all GPIO pins used by the Sense board during deep sleep, however, since its power circuitry is directly connected to the 3.3V power rail, we were unable to reduce the current consumption.
 
 Our next approach was to employ an external hardware circuitry that controls power delivery to the XIAO. We experimented with designing a custom digital circuit with microamp current consumption, which has been proven very difficult given the resources available and the timeframe. As a result, we opted to use a microcontroller for this purpose, specifically another XIAO ESP32S3. The control of power delivery is done using a P-MOSFET as a high-side switch connected to a GPIO pin. A high-side switching setup completely cuts off the access to 3.3V on the PD_XIAO subsystem, greatly reducing leakage current. The signaling mechanism for power cutoff is done using GPIO interconnection.
 
-### 3.2.3 PIR Erratic Output
+### 3.2.3. PIR Erratic Output
 
 ![PIR_output](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/PIR%20output.png)
 
@@ -118,7 +118,7 @@ Our initial solution was to shorten the pulses using a small capacitor in series
 
 The final solution we chose was to simply include a software delay. A delay in energy-constrained microcontroller development is extremely costly. To address this, instead of having the system idle during the delay, we put the PIR_XIAO subsystem to deep sleep with a timer wakeup. This allows the subsystem to only suffer a slight penalty of a few tens of milliseconds of an extra wakeup while effectively debouncing the PIR sensor. In addition, this delay also serves as a way to limit the frequency that person detection can be performed, preventing unnecessary energy consumption if the system were to malfunction.
 
-### 3.2.4 GPIO Undefined State During Power On
+### 3.2.4. GPIO Undefined State During Power On
 
 ![rc_delay](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/RC%20delay.png)
 
