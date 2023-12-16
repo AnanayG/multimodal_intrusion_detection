@@ -17,9 +17,9 @@ This project implements person detection by combining a PIR motion sensor and a 
   * [5V Demo Video](https://youtube.com/shorts/ZmwHzCMsa_o?feature=share)
   * [Wifi Streaming Demo Video](https://www.youtube.com/watch?v=NmRjGxvr8ks)
 
-## Software Submmodule/Cloning the repo
+## Software Submodule/Cloning the repo
 
-As the software code of our repo was heavily dervied from exisiting person detection work, We cloned the 'espressif/esp-tflite-micro' repo and added our commits on top of it. All of our commit history realted to software code lies in that github repository.
+As the software code of our repo was heavily dervied from exisiting person detection work, We cloned the 'espressif/esp-tflite-micro' repo and added our commits on top of it. All of our commit history related to software code lies in that github repository.
 This main repo (under software/) contains a reference to another repo that contains all the software code.
 
 You need to do a couple of extra steps to ensure proper initilisation.
