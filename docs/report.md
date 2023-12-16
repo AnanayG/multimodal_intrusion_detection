@@ -14,30 +14,30 @@ This project aims to implement a multimodal person detection system for wireless
 
 # 1. Introduction
 
-## Motivation & Objective
+## 1.1. Motivation & Objective
 
 Home security cameras have been increasingly popular due to their effectiveness in deterring criminal activities, including burglary and property theft. However, conventional wired surveillance systems are often difficult to set up and can result in excessive, unnecessary energy usage. In this project, we propose an ultra-low-power human detection system with a multimodal wakeup hierarchy, designed for battery-powered security cameras. This approach enables the system to remain in deep sleep and only activates upon detecting human activities, drastically reducing energy consumption.
 
-## State of the Art & Its Limitations
+## 1.2. State of the Art & Its Limitations
 
 Battery-operated consumer surveillance products in the market today often present three main issues: privacy concerns associated with cloud-based data processing, poor battery life due to frequent system wakeups, and the requirement of a costly monthly subscription. Typically, these systems rely solely on a PIR sensor to activate the system, which triggers recording and transmission to the cloud for processing like person detection and facial recognition, alerting the user only when an anomaly is detected. However, this approach is not only inefficient due to a high rate of false positives, but also compromises privacy by uploading the footage online. Furthermore, access to many of these processing services requires a costly monthly subscription.
 
 On the other hand, there have been attempts at performing ultra-low-power person detection at the edge. Though effective in lowering power consumption, these methods often rely on specialized hardware accelerator designs, which are costly to implement and lack flexibility for updates. There is a definite need for a more flexible, general-purpose solution that utilizes readily-available, off-the-shelf components.
 
-## Novelty & Rationale
+## 1.3. Novelty & Rationale
 
 Our approach combines an always-on PIR sensor with a low-power monochrome image sensor to perform person detection locally at the edge. This method ensures privacy by retaining all footage directly on the device. To enable person detection on resource-limited devices, we leverage TinyML techniques such as model pruning and quantization. Moreover, our system is built with off-the-shelf components and open-source libraries, which enhances its adaptability and upgradeability.
 
 
-## Potential Impact
+## 1.4. Potential Impact
 
 Successful completion of this project will demonstrate the superiority of a multimodal person detection approach compared to the traditional motion-only or vision-only approach, facilitating the design of battery-operated and/or energy-harvesting security camera models that are user-friendly, energy-efficient, and privacy-conscious. In addition, the modular design of our system allows for easy adaptation to improve the power consumption of existing vision-only person detection systems. Finally, by demonstrating the effectiveness of TinyML compared to traditional cloud-based ML, this project could motivate further research and development in the emerging field of TinyML.
 
-## Challenges
+## 1.5. Challenges
 
 As with all TinyML applications, the key challenges of this project are two: the limited processing resources for executing the neural network and the strict energy constraints of battery-powered scenarios. Person detection is a complex task usually done on powerful computers; however, our project operates with a microcontroller that has significantly less processing power and available memory by comparison, greatly limiting the size of the neural network it can support. Moreover, being battery-powered, our system must minimize the energy consumption to ensure longevity. Under such tight constraints, the challenge is to perform person detection with accuracy comparable to models run on PCs and servers, while consuming energy magnitudes lower than these machines and maintaining a reasonable latency.
 
-## Requirements for Success
+## 1.6. Requirements for Success
 
 The hardware required for this project is as follows:
 * 1x [XIAO ESP32S3 Sense](https://www.seeedstudio.com/XIAO-ESP32S3-Sense-p-5639.html) by SEEED Studio (equipped with OV2640 camera module) 
@@ -50,7 +50,7 @@ The skills required are the following:
 * Understanding of machine learning, in particularly model optimization for deployment on a microcontroller (TinyML)
 * Understanding of internet protocols and web server hosting
 
-## Metrics of Success
+## 1.7. Metrics of Success
 
 For our project to be deemed successful, our system needs to perform at least 50 wakeup events per day while maintaining a power consumption of less than 170 µW (which equates to 14688 mJ per day), taken from a state-of-the-art vision-only implementation [1]. In addition, for demonstration purposes, our system must have the ability to capture footage of arbitrary length through the main colored camera upon detecting a person, as well as the ability to either store the footage locally or stream it over the internet.
 
@@ -146,7 +146,7 @@ The following graph showcases the current consumption of 3 consecutive wakeup ev
 
 ![energy_disttribution](https://raw.githubusercontent.com/AnanayG/multimodal_intrusion_detection/main/docs/media/current%20consumption%20-%203%20peaks.png)
 
-The main peak is partitioned into individual phases. The regions of operation are indicated in the graph below. Note that the person detection neural network consumes almost the most amount of current, but only takes 58ms to execute. The circuit delay portion also consumes significant current, but it takes 381ms to execute. As previously mentioned in [this](#324-gpio-undefined-state-during-power-on) section, we have removed the RC circuit in our final prototype, hence the current consumption induced by the circuit delay is no longer relevant. This has also been demonstrated in the [second demo video](#6. Demo Links/Project Resources).
+The main peak is partitioned into individual phases. The regions of operation are indicated in the graph below. Note that the person detection neural network consumes almost the most amount of current, but only takes 58ms to execute. The circuit delay portion also consumes significant current, but it takes 381ms to execute. As previously mentioned in [Section 3.2.4](#324-gpio-undefined-state-during-power-on), we have removed the RC circuit in our final prototype, hence the current consumption induced by the circuit delay is no longer relevant. This has also been demonstrated in the [second demo video](#6. Demo Links/Project Resources).
 
 With the RC circuit removed, the active ON-state current consumption per wakeup cycle is reduced to 225mJ/wakeup, which allows for a 42 wakeups/day.
 
@@ -164,7 +164,7 @@ In conclusion, we consider our project a success despite not strictly meeting th
 # 6. Demo Links
 
 * [Master Demo Video](https://www.youtube.com/watch?si=UEJS8G_MfGbzbT3T&v=8JuSE7JUu0g&feature=youtu.be)
-* [5V Demo Video](https://youtube.com/shorts/ZmwHzCMsa_o?feature=share)
+* [No RC Circuit Demo Video](https://youtube.com/shorts/ZmwHzCMsa_o?feature=share)
 * [Wifi Streaming Demo Video](https://www.youtube.com/watch?v=NmRjGxvr8ks)
 * [System power data](https://docs.google.com/spreadsheets/d/1SeqJhA1LRMm0-gP1tuYFk-gqm2a6v0A1QVVGwjIOnUg/edit?usp=sharing)
 * [Final Presentation Link](https://docs.google.com/presentation/d/1U2bdHlef-A1cob_oj03bhjhw77Q7Prq9A0cpEgVMt5c/edit?usp=sharing)
